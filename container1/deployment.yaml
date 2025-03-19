@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: container1
+  template:
+    metadata:
+      labels:
+        app: container1
+    spec:
+      containers:
+        - name: container1
+          image: 
+          volumeMounts:
+            - name: standard-volume
+              mountPath: /malav_PV_dir
+      volumes:
+        - name: standard-volume
+          persistentVolumeClaim:
+            claimName: pvc-volume

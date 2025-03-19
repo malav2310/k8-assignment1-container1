@@ -1,0 +1,42 @@
+steps:
+  # Step 1: Build Docker Image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        '${_IMAGE_NAME}:latest',
+        '-f',
+        'container1/Dockerfile',
+        'container1',
+      ]
+
+  # Step 2: Push Image to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '${_IMAGE_NAME}:latest']
+
+  # Deploying on kubernetes cluster
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'apply'
+      - '-f'
+      - 'container1/deployment.yaml'
+      - '-f'
+      - 'container1/service.yaml'
+    env:
+      - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+      - 'CLOUDSDK_COMPUTE_ZONE=${_GKE_ZONE}'
+
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['rollout', 'restart', 'deployment/container1-deployment']
+    env:
+      - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+      - 'CLOUDSDK_COMPUTE_ZONE=${_GKE_ZONE}'
+
+substitutions:
+  _IMAGE_NAME: 'us-east1-docker.pkg.dev/sylvan-presence-437615-e6/k8-assignment-artifact-registry'
+  _GKE_CLUSTER: 'malav-k8-assignment-cluster'
+  _GKE_ZONE: 'us-central1-c'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
