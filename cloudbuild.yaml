@@ -20,7 +20,7 @@ steps:
     args:
       - '-c'
       - |
-        gcloud container clusters get-credentials malav-k8-assignment-cluster --zone us-central1
+        gcloud container clusters get-credentials malav-k8-assignment-cluster --zone 
         kubectl apply -f pvc.yaml
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
