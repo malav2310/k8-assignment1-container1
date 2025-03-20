@@ -22,8 +22,8 @@ steps:
       - |
         gcloud container clusters get-credentials malav-k8-assignment-cluster --zone us-central1-c
         kubectl apply -f pvc.yaml
-        kubectl apply -f deployment.yaml
-        kubectl apply -f service.yaml
+        kubectl apply -f container1-deployment.yaml
+        kubectl apply -f container1-service.yaml
 
 images:
   - 'us-east1-docker.pkg.dev/sylvan-presence-437615-e6/k8-assignment-artifact-registry/container1:latest'
