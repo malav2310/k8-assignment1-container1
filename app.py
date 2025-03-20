@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Persistent volume path
 PERSISTENT_STORAGE_PATH = "/malav_PV_dir"
-CONTAINER_2_URL = "http://container2:7000/process"
+CONTAINER_2_URL = "http://container2-service:80/endpoint"
 
 # Ensure the storage directory exists
 os.makedirs(PERSISTENT_STORAGE_PATH, exist_ok=True)
