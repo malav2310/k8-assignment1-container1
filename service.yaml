@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-service
+  name: container1-service
   labels:
     app: container1
 spec:
