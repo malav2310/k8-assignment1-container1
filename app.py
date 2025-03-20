@@ -46,7 +46,8 @@ def calculate():
         return jsonify({"file": file_name, "error": "File not found."}), 404
 
     try:
-        response = requests.post('http://container2-service/sum', json=data)
+        response = requests.post('CONTAINER_2_URL = "http://container2-service.default.svc.cluster.local:80/sum"
+', json=data)
         return jsonify(response.json()), response.status_code
     except requests.exceptions.RequestException as error:
         return jsonify({'error': str(error)}), 500
