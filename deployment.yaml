@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: container1
-          image: us-east1-docker.pkg.dev/sylvan-presence-437615-e6/k8-assignment-artifact-registry/container2:latest
+          image: us-east1-docker.pkg.dev/sylvan-presence-437615-e6/k8-assignment-artifact-registry/container1:latest
           volumeMounts:
             - name: standard-volume
               mountPath: /malav_PV_dir
