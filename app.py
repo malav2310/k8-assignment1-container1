@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-# Persistent volume path
+# Persistent volume paths
 PERSISTENT_STORAGE_PATH = "/malav_PV_dir"
 CONTAINER_2_URL = "http://container2-service/process"
 
