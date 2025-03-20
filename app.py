@@ -57,7 +57,7 @@ def calculate():
 
     # Send request to Container 2
     try:
-        response = requests.post(CONTAINER_2_URL, json=data)
+        response = requests.post("http://container2-service/process", json=data)
         return jsonify(response.json()), response.status_code
     except Exception as e:
         return jsonify({"error": str(e)}), 500
