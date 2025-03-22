@@ -46,7 +46,7 @@ def calculate():
         return jsonify({"file": file_name, "error": "File not found."}), 404
 
     try:
-        response = requests.post( 'http://34.118.237.138/sum', json=data)
+        response = requests.post( 'http://34.118.228.70/sum', json=data)
         return jsonify(response.json()), response.status_code
     except requests.exceptions.RequestException as error:
         return jsonify({'error': str(error)}), 500
